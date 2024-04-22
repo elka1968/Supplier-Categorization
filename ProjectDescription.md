@@ -22,7 +22,7 @@ Tier 3: Delves into data that remains unresolved post Tiers 1 and 2, earmarked f
 
 • Conversion of character encodings to maintain data quality (Corrupt characters are translated correctlty to UTF-8 output).
 
-• Structuring of data outputs for clear and actionable reporting.
+• Structuring of data outputs for clear and actionable reporting such as duplicate counts, probability scores, and unique identifiers.
 
 • Efficient handling of a sizable database of 117k entries, focusing on the U.S. supplier subset.
 
