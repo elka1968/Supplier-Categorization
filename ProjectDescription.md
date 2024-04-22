@@ -24,9 +24,7 @@ Tier 3: Delves into data that remains unresolved post Tiers 1 and 2, earmarked f
 
 • Structuring of data outputs for clear and actionable reporting such as duplicate counts, probability scores, and unique identifiers.
 
-• Efficient handling of a sizable database of 117k entries, focusing on the U.S. supplier subset.
-
-• The automation code can be utilized not only for the U.S. supplier subset but for the whole dataset of 117k entries.
+• Efficient handling of the automation code, it can be utilized not only for the U.S. supplier subset but for the whole dataset of 117k entries.
 
 # **Trials and Failures to Reference:**
 
