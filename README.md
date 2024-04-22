@@ -30,9 +30,9 @@ Tier 3: Delves into data that remains unresolved post Tiers 1 and 2, earmarked f
 
 • The original method using the Levenshtein distance took 18 hours to process 80,000 rows.
 
-• After replacing the Levenshtein distance method with the 'FuzzyWuzzy' package, the processing time for 80,000 rows was reduced to 1 hour, marking an approximate 94.4% decrease in time.
+• After replacing the Levenshtein distance method with the 'FuzzyWuzzy' package, the processing time for 80,000 rows was reduced to 1 hour, marking an approximate 94% decrease in time.
 
-• Subsequently, switching to the 'Rapidfuzz' package further improved efficiency, with 80,000 rows taking only 20 minutes to process. This change resulted in a 66.7% reduction in time compared to using 'FuzzyWuzzy' and a 98.1% decrease from the original method using the Levenshtein distance.
+• Further optimization was achieved by switching to the 'Rapidfuzz' package, which processed 80,000 rows in only 10 minutes. This change resulted in a 83% reduction in time compared to the FuzzyWuzzy package and a 99% decrease from the original method.
 
 # Failures to Reference
 
