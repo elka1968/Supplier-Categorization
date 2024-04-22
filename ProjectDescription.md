@@ -40,6 +40,3 @@ Other Methods That Didn't Work:
 
 - Similarity scoring by matches a dictionary from a source of U.S. cities pulling from Excel, CSV, and Textfile.
 - Implementation of Binpackage utilizing LargeLanguageModels of data relating to U.S. cities to use as a reference.
-
-# **Reccomendations ands Analysis:**
-
