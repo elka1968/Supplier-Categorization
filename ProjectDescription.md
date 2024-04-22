@@ -20,11 +20,13 @@ Tier 3: Delves into data that remains unresolved post Tiers 1 and 2, earmarked f
 
 • Development of a data validation algorithm to ensure accuracy.
 
-• Conversion of character encodings to maintain data quality.
+• Conversion of character encodings to maintain data quality (Corrupt characters are translated correctlty to UTF-8 output).
 
 • Structuring of data outputs for clear and actionable reporting.
 
 • Efficient handling of a sizable database of 117k entries, focusing on the U.S. supplier subset.
+
+• The automation code can be utilized not only for the U.S. supplier subset but for the whole dataset of 117k entries.
 
 # **Trials and Failures to Reference:**
 
