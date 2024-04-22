@@ -1,4 +1,4 @@
-# Supplier Categorization Project - Arrow2 code
+# Supplier Categorization Code Reference
 ```
 import pandas as pd
 from rapidfuzz import process, fuzz
