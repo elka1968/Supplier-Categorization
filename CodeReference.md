@@ -5,7 +5,7 @@ from alive_progress import alive_bar
 import time
 import re
 
-**def remove_trailing_numbers(name):
+def remove_trailing_numbers(name):
     if pd.isna(name):
         return name
     name_without_digits = ''.join(filter(lambda x: not x.isdigit(), name))
