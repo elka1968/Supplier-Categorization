@@ -26,7 +26,7 @@ Tier 3: Delves into data that remains unresolved post Tiers 1 and 2, earmarked f
 
 • Efficient handling of the automation code, it can be utilized not only for the U.S. supplier subset but for the whole dataset of 117k entries.
 
-# **Trials To Reference:**
+# Trials To Reference:**
 
 Trials   
 
