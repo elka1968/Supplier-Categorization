@@ -28,7 +28,9 @@ Tier 3: Delves into data that remains unresolved post Tiers 1 and 2, earmarked f
 
 # **Trials and Failures to Reference:**
 
-• Uncompleted Task (Spell checking automation for the "Invoice Supplier City" column)
+Trials  • 
+
+Failure • Uncompleted Task (Spell checking automation for the "Invoice Supplier City" column)
 
 Packages That Didn't Work: 
 
@@ -39,4 +41,4 @@ Packages That Didn't Work:
 Other Methods That Didn't Work:
 
 - Similarity scoring by matches a dictionary from a source of U.S. cities pulling from Excel, CSV, and Textfile.
-- Implementation of Binpackage utilizing LargeLanguageModels of data relating to U.S. cities to use as a reference.
+- Implementation of a Binpackage utilizing LargeLanguageModels of data relating to U.S. cities to use as a reference.
