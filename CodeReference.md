@@ -144,6 +144,7 @@ name_column = 'Supplier_Normalized'
 Default_Supplier_Category = '/Users/milan/OneDrive/Desktop/duplicates_info_CUB/Default_Supplier_Category_fix.csv'
 city_column = 'Invoice_Supplier_City'
 detect_and_add_duplicates_info(input_file, name_column, city_column)
+
 ```
 # Code line 129 should be changed appropriatley to your desktops file
 # Code line 137 should be changed appropriatley to your desktops file
