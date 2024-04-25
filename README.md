@@ -10,7 +10,7 @@ This project represents a strategic initiative to streamline Arrow Electronics' 
 - A series of Visualizations and Dashboards providing clear insights into supplier data, facilitating easier decision-making and reporting.
 - Implementation of a Three-tier Data Validation and Cleaning System:
 
-Tier 1: Tackles the US supplier subset with a focus on removing duplicates and resolving clear data issues.
+Tier 1: Tackles the dataset with a focus on removing duplicates and resolving clear data issues.
 
 Tier 2: Catches and rectifies anomalies unaddressed by Tier 1 using a refined algorithm for data validation.
 
