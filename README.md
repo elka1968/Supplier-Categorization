@@ -34,7 +34,7 @@ Tier 3: Delves into data that remains unresolved post Tiers 1 and 2, earmarked f
 
 • Further optimization was achieved by switching to the 'Rapidfuzz' package, which processed 117,000 rows in only 23 minutes. This change resulted in a 86% reduction in time compared to the FuzzyWuzzy package and a 99% decrease from the original method.
 
-# Failures to Reference
+# Failures To Reference
 
 • Uncompleted Task (Spell checking automation for the "Invoice Supplier City" column)
 
