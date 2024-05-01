@@ -150,7 +150,7 @@ detect_and_add_duplicates_info(input_file, name_column, city_column)
 
 
 ```
-# Code line 133 should be changed appropriatley to your desktops file
-# Code line 141 should be changed appropriatley to your desktops file
-# Code line 146 should be changed appropriatley to your desktops file/matching directory of your desktop
-# Code line 148 should be changed appropriatley to your desktops file/matching directory of your desktop
+# Code line 132 should be changed appropriatley to your desktops file
+# Code line 140 should be changed appropriatley to your desktops file
+# Code line 145 should be changed appropriatley to your desktops file/matching directory of your desktop
+# Code line 147 should be changed appropriatley to your desktops file/matching directory of your desktop
