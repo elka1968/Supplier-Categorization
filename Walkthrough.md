@@ -127,7 +127,7 @@ def detect_and_add_duplicates_info(input_file, name_column, city_column, similar
             bar()
 ```
 - This is the supplier similarity section of the code. It uses a similarity threshold to control the matching.
-- It uses "scorer=fuzz.ratio" (part of the 'RapidFuzz' package).
+- It uses "process.extract" (part of the 'RapidFuzz' package). If you wanted to use 'FuzzyWuzzy' you can use "process.extractBests" but 
 
 ```
     # Remove commas and ellipses from 'Supplier_Normalized' again
