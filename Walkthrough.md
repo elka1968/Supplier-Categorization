@@ -7,6 +7,7 @@ import time
 import re
 
 ```
+```
 
 
 def remove_trailing_numbers(name):
@@ -59,6 +60,7 @@ def replace_supplier_names(df_u, df_d):
 
     return df_u
 
+```
 
 def detect_and_add_duplicates_info(input_file, name_column, city_column, similarity_threshold=95):
     df = pd.read_csv(input_file)
