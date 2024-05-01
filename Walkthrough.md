@@ -7,7 +7,7 @@ import time
 import re
 
 ```
-:These are the packages that are used in the code:
+These are the packages that are used in the code:
 
 - You can change the 'RapidFuzz' packaged where appropriate in preference to a different Python package.
 ```
