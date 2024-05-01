@@ -1,5 +1,6 @@
-# Supplier Categorization Code Reference
+# Supplier Categorization 'RapidFuzz' Code Reference
 ```
+# RapidFuzz Code
 import pandas as pd
 from rapidfuzz import process, fuzz
 from alive_progress import alive_bar
@@ -115,8 +116,11 @@ def detect_and_add_duplicates_info(input_file, name_column, city_column, similar
 
     # Map similar names to create a column Unique_Identifier
     df['Unique_Identifier'] = df.apply(lambda
-                                        row: f"{row['Supplier_Normalized']}_{row['Store_Numbers']}_{remove_trailing_numbers(row[city_column]) if pd.notna(row[city_column]) else ''}_{row['Invoice_Supplier_State']}_{row['Invoice_Supplier_Country']}",
+                                        row: f"{row['Supplier_Normalized']}_{row['Store_Numbers']}_{row[city_column]}_{row['Invoice_Supplier_Country']}" if pd.notna(row[city_column]) else f"{row['Supplier_Normalized']}_{row['Store_Numbers']}_{row['Invoice_Supplier_Country']}",
                                         axis=1)
+
+    # Remove double underscores and replace them with single underscores
+    df['Unique_Identifier'] = df['Unique_Identifier'].str.replace('__', '_')
 
     # Create a column for the probability score
     df['Probability_Score'] = df['Supplier_Normalized'].map(
@@ -126,7 +130,7 @@ def detect_and_add_duplicates_info(input_file, name_column, city_column, similar
     df['Duplicates_Count'] = df.groupby('Unique_Identifier')['Unique_Identifier'].transform('size')
 
     # Save duplicates information to Excel file
-    output_file_duplicates = "/Users/milan/OneDrive/Desktop/duplicates_info_CUB/duplicates_info_CUB_full[7.1].xlsx"
+    output_file_duplicates = "/Users/milan/OneDrive/Desktop/duplicates_info_CUB/duplicates_info_CUB_full[RapidFuzz].xlsx"
     df.to_excel(output_file_duplicates, index=False)
     print(f"Duplicates information has been saved to '{output_file_duplicates}'.")
 
@@ -134,19 +138,20 @@ def detect_and_add_duplicates_info(input_file, name_column, city_column, similar
     df_below_threshold = df[df['Probability_Score'] < 100]
 
     # Save filtered entries to another Excel file
-    output_file_below_threshold = "/Users/milan/OneDrive/Desktop/duplicates_info_CUB/duplicates_info_manualReview[7.1].xlsx"
+    output_file_below_threshold = "/Users/milan/OneDrive/Desktop/duplicates_info_CUB/duplicates_info_manualReview[RapidFuzz].xlsx"
     df_below_threshold.to_excel(output_file_below_threshold, index=False)
     print(f"Entries with probability score less than 100% have been saved to '{output_file_below_threshold}'.")
 
 # Example usage:
-input_file = '/Users/milan/OneDrive/Desktop/duplicates_info_CUB/CUB_Supplier_FullData.csv'
+input_file = '/Users/milan/OneDrive/Desktop/duplicates_info_CUB/CUB_Tiny_Test.csv'
 name_column = 'Supplier_Normalized'
 Default_Supplier_Category = '/Users/milan/OneDrive/Desktop/duplicates_info_CUB/Default_Supplier_Category_fix.csv'
 city_column = 'Invoice_Supplier_City'
 detect_and_add_duplicates_info(input_file, name_column, city_column)
 
+
 ```
-# Code line 129 should be changed appropriatley to your desktops file
-# Code line 137 should be changed appropriatley to your desktops file
-# Code line 142 should be changed appropriatley to your desktops file/matching directory of your desktop
-# Code line 144 should be changed appropriatley to your desktops file/matching directory of your desktop
+# Code line 133 should be changed appropriatley to your desktops file
+# Code line 141 should be changed appropriatley to your desktops file
+# Code line 146 should be changed appropriatley to your desktops file/matching directory of your desktop
+# Code line 148 should be changed appropriatley to your desktops file/matching directory of your desktop
