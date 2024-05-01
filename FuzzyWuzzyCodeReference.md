@@ -1,7 +1,7 @@
 # Supplier Categorization 'FuzzyWuzzy' Code Reference
 ```
 import pandas as pd
-from rapidfuzz import process, fuzz
+from fuzzywuzzy import process, fuzz
 from alive_progress import alive_bar
 import time
 import re
@@ -88,22 +88,23 @@ def detect_and_add_duplicates_info(input_file, name_column, city_column, similar
     # Sort DataFrame by the name column
     df.sort_values(by=name_column, inplace=True)
 
-    # Identify similar supplier names using RapidFuzz
-    print(f"Identifying duplicate supplier names using RapidFuzz...")
+    # Identify similar supplier names using FuzzyWuzzy
+    print(f"Identifying duplicate supplier names using FuzzyWuzzy...")
     similar_names_mapping = {}
     unique_supplier_names = df['Supplier_Normalized'].dropna().unique()
     with alive_bar(len(unique_supplier_names)) as bar:
         for name in unique_supplier_names:
-            # Exclude NaN values only when applying fuzzy matching
-            matches = process.extract(name, unique_supplier_names, scorer=fuzz.ratio,
-                                      limit=None, score_cutoff=similarity_threshold)
-            for match in matches:
-                matched_name = match[0]
-                score = match[1]
-                if pd.notna(matched_name) and pd.notna(name):
-                    # Add a more specific condition to control the matching
-                    if score > similarity_threshold:  # You can adjust the threshold as needed
-                        similar_names_mapping[matched_name] = (name, score)  # Include the score in the mapping
+            if name.strip() != '':  # Check if the name is not an empty string
+                # Exclude NaN values only when applying fuzzy matching
+                matches = process.extractBests(name, unique_supplier_names, scorer=fuzz.ratio,
+                                               limit=None, score_cutoff=similarity_threshold)
+                for match in matches:
+                    matched_name = match[0]
+                    score = match[1]
+                    if pd.notna(matched_name) and pd.notna(name):
+                        # Add a more specific condition to control the matching
+                        if score > similarity_threshold:  # You can adjust the threshold as needed
+                            similar_names_mapping[matched_name] = (name, score)  # Include the score in the mapping
             time.sleep(0.01)
             bar()
 
@@ -113,7 +114,7 @@ def detect_and_add_duplicates_info(input_file, name_column, city_column, similar
     # Create a new column for normalized supplier names and capitalize all entries again
     df['Supplier_Normalized'] = df[name_column].str.upper()
 
-    # Map similar names to create a column Unique_Identifier
+   # Map similar names to create a column Unique_Identifier
     df['Unique_Identifier'] = df.apply(lambda
                                         row: f"{row['Supplier_Normalized']}_{row['Store_Numbers']}_{row[city_column]}_{row['Invoice_Supplier_Country']}" if pd.notna(row[city_column]) else f"{row['Supplier_Normalized']}_{row['Store_Numbers']}_{row['Invoice_Supplier_Country']}",
                                         axis=1)
@@ -129,7 +130,7 @@ def detect_and_add_duplicates_info(input_file, name_column, city_column, similar
     df['Duplicates_Count'] = df.groupby('Unique_Identifier')['Unique_Identifier'].transform('size')
 
     # Save duplicates information to Excel file
-    output_file_duplicates = "/Users/milan/OneDrive/Desktop/duplicates_info_CUB/duplicates_info_CUB_full[RapidFuzz].xlsx"
+    output_file_duplicates = "/Users/milan/OneDrive/Desktop/duplicates_info_CUB/duplicates_info_CUB_full[FuzzyWuzzy3].xlsx"
     df.to_excel(output_file_duplicates, index=False)
     print(f"Duplicates information has been saved to '{output_file_duplicates}'.")
 
@@ -137,7 +138,7 @@ def detect_and_add_duplicates_info(input_file, name_column, city_column, similar
     df_below_threshold = df[df['Probability_Score'] < 100]
 
     # Save filtered entries to another Excel file
-    output_file_below_threshold = "/Users/milan/OneDrive/Desktop/duplicates_info_CUB/duplicates_info_manualReview[RapidFuzz].xlsx"
+    output_file_below_threshold = "/Users/milan/OneDrive/Desktop/duplicates_info_CUB/duplicates_info_manualReview[FuzzyWuzzy3].xlsx"
     df_below_threshold.to_excel(output_file_below_threshold, index=False)
     print(f"Entries with probability score less than 100% have been saved to '{output_file_below_threshold}'.")
 
@@ -150,8 +151,8 @@ detect_and_add_duplicates_info(input_file, name_column, city_column)
 
 
 ```
-# Code line 132 should be changed appropriatley to your desktops file
-# Code line 140 should be changed appropriatley to your desktops file
-# Code line 145 should be changed appropriatley to your desktops file/matching directory of your desktop
-# Code line 147 should be changed appropriatley to your desktops file/matching directory of your desktop
+# Code line 133 should be changed appropriatley to your desktops file
+# Code line 141 should be changed appropriatley to your desktops file
+# Code line 146 should be changed appropriatley to your desktops file/matching directory of your desktop
+# Code line 148 should be changed appropriatley to your desktops file/matching directory of your desktop
 
