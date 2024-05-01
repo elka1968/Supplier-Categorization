@@ -64,7 +64,7 @@ def replace_supplier_names(df_u, df_d):
 
 ```
 - Above is the Tier 2 code that cleans the "Supplier Normalized" column to prepare for similarity matching.
-- Also replaces the supplier names previously identified in the supllier database and makes a record if it was previously identified.
+- Also replaces the supplier names previously identified in the supplier database and makes a record if it was previously identified.
 
 ```
 
