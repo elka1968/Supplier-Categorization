@@ -28,11 +28,11 @@ Tier 3: Delves into data that remains unresolved post Tiers 1 and 2, earmarked f
 
 # Trials To Reference:
 
-• The original method using the Levenshtein distance took 24 hours to process 117,000 rows. Estimated Accuracy (Results May Vary) = MORE ACCURATE.
+• Approach: The original method using the Levenshtein distance took 24 hours to process 117,000 rows. Estimated Accuracy (Results May Vary) = MORE ACCURATE.
 
-• After replacing the Levenshtein distance method with the 'FuzzyWuzzy' package, the processing time for 117,000 rows was reduced to 1 hour and 45 minutes, marking an approximate 94% decrease in time. Estimated Accuracy (Results May Vary) = MODERATELY ACCURATE.
+• Approach: After replacing the Levenshtein distance method with the 'FuzzyWuzzy' package, the processing time for 117,000 rows was reduced to 1 hour and 45 minutes, marking an approximate 94% decrease in time. Estimated Accuracy (Results May Vary) = MODERATELY ACCURATE.
 
-• Further optimization was achieved by switching to the 'Rapidfuzz' package, which processed 117,000 rows in only 23 minutes. This change resulted in a 86% reduction in time compared to the FuzzyWuzzy package and a 99% decrease from the original method. Estimated Accuracy (Results May Vary) = STILL ACCURATE AS 'FUZZY WUZZY', BUT IT WILL GROUP MORE STRINGS COMPARED TO THE OTHER METHODS.
+• Approach: Further optimization was achieved by switching to the 'Rapidfuzz' package, which processed 117,000 rows in only 23 minutes. This change resulted in a 86% reduction in time compared to the FuzzyWuzzy package and a 99% decrease from the original method. Estimated Accuracy (Results May Vary) = STILL ACCURATE AS 'FUZZY WUZZY', BUT IT WILL GROUP MORE STRINGS COMPARED TO THE OTHER METHODS.
 
 • Threshold Value: 95 was found to be the best threshold to use, still being accuracte but accounting for the odd groupings as well. Anything above 95 was found to be too strict and anything less will be too lax.
 
