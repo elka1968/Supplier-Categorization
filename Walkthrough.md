@@ -7,7 +7,9 @@ import time
 import re
 
 ```
-Milan has a lot of swag
+These are the packages that are used in the code:
+
+- You can change 'RapidFuzz' where appropriate in preference to a different Python package.
 ```
 
 
@@ -62,6 +64,10 @@ def replace_supplier_names(df_u, df_d):
     return df_u
 
 ```
+- Above is the Tier 2 code that cleans the "Supplier Normalized" column to prepare for similarity matching.
+- Also replaces the supplier names previously identified in the supllier database and makes a record if it was previously identified.
+
+```
 
 def detect_and_add_duplicates_info(input_file, name_column, city_column, similarity_threshold=95):
     df = pd.read_csv(input_file)
@@ -93,6 +99,13 @@ def detect_and_add_duplicates_info(input_file, name_column, city_column, similar
 
     # Sort DataFrame by the name column
     df.sort_values(by=name_column, inplace=True)
+```
+- This section of the code removes trailing numbers and special characters (Store Numbers will be appended later).
+- The code also standardizes the capitalization to ensure accuracy in similarity matching.
+- The code categorizes alphabetically to ensure better speed in calculation.
+
+```
+
 
     # Identify similar supplier names using RapidFuzz
     print(f"Identifying duplicate supplier names using RapidFuzz...")
@@ -112,7 +125,11 @@ def detect_and_add_duplicates_info(input_file, name_column, city_column, similar
                         similar_names_mapping[matched_name] = (name, score)  # Include the score in the mapping
             time.sleep(0.01)
             bar()
+```
+- This is the supplier similarity section of the code. It uses a similarity threshold to control the matching.
+- It uses "scorer=fuzz.ratio" (part of the 'RapidFuzz' package).
 
+```
     # Remove commas and ellipses from 'Supplier_Normalized' again
     df[name_column] = df[name_column].apply(remove_commas_and_ellipses)
 
