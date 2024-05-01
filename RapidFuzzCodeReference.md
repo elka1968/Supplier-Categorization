@@ -1,6 +1,5 @@
 # Supplier Categorization 'RapidFuzz' Code Reference
 ```
-# RapidFuzz Code
 import pandas as pd
 from rapidfuzz import process, fuzz
 from alive_progress import alive_bar
