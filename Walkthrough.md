@@ -127,7 +127,7 @@ def detect_and_add_duplicates_info(input_file, name_column, city_column, similar
             bar()
 ```
 - This is the supplier similarity section of the code. It uses a similarity threshold to control the matching.
-- It uses "process.extract" (part of the 'RapidFuzz' package). If you wanted to use 'FuzzyWuzzy' you can use "process.extractBests" but 
+- It uses "process.extract" (part of the 'RapidFuzz' package). If you wanted to use 'FuzzyWuzzy' you can use "process.extractBests". For ease of change go into the "FuzzyWuzzyCodeReference" to denote apporapriate changes.
 
 ```
     # Remove commas and ellipses from 'Supplier_Normalized' again
@@ -138,8 +138,12 @@ def detect_and_add_duplicates_info(input_file, name_column, city_column, similar
 
     # Map similar names to create a column Unique_Identifier
     df['Unique_Identifier'] = df.apply(lambda
-                                        row: f"{row['Supplier_Normalized']}_{row['Store_Numbers']}_{remove_trailing_numbers(row[city_column]) if pd.notna(row[city_column]) else ''}_{row['Invoice_Supplier_State']}_{row['Invoice_Supplier_Country']}",
+                                        row: f"{row['Supplier_Normalized']}_{row['Store_Numbers']}_{row[city_column]}_{row['Invoice_Supplier_Country']}" if pd.notna(row[city_column]) else f"    
+                                        {row['Supplier_Normalized']}_{row['Store_Numbers']}_{row['Invoice_Supplier_Country']}",
                                         axis=1)
+
+    # Remove double underscores and replace them with single underscores
+    df['Unique_Identifier'] = df['Unique_Identifier'].str.replace('__', '_')
 
     # Create a column for the probability score
     df['Probability_Score'] = df['Supplier_Normalized'].map(
@@ -160,12 +164,25 @@ def detect_and_add_duplicates_info(input_file, name_column, city_column, similar
     output_file_below_threshold = "/Users/milan/OneDrive/Desktop/duplicates_info_CUB/duplicates_info_manualReview[7.1].xlsx"
     df_below_threshold.to_excel(output_file_below_threshold, index=False)
     print(f"Entries with probability score less than 100% have been saved to '{output_file_below_threshold}'.")
+```
+- This area of the code does some more normalization to enusre duplicates are accounted for correctly.
+- Creates unique indentifier based on the store numbers, city, and country in addition to the normalized name resulting from similarity scoring.
+- Probability scores are calculated based on the threshold value.
+- Instances below the threshold value are saved for manual reviews (Tier 3).
+- All of the instances are saved to designated output file.
 
+```
 # Example usage:
 input_file = '/Users/milan/OneDrive/Desktop/duplicates_info_CUB/CUB_Supplier_FullData.csv'
 name_column = 'Supplier_Normalized'
 Default_Supplier_Category = '/Users/milan/OneDrive/Desktop/duplicates_info_CUB/Default_Supplier_Category_fix.csv'
 city_column = 'Invoice_Supplier_City'
 detect_and_add_duplicates_info(input_file, name_column, city_column)
+```
+- input_file: This is the input file which holds the supplier data. Ensure that a csv file is being used, not as xlsx.
+- name_column: This can be titled whatever you like, however take note of underscores in the column name. In the unique identifier section of the code it uses underscores to identify 'Supplier_Normalized', 'Store_Numbers', and 'Invoice_Supplier_Country'.
+- Default_Supplier_Category: Conatains information about the previous supplier information. Used to standardized names for similarity scoring using "supp_join" as reference.
+- city_column: Used as part of the unique identifier section. 
+
 ```
 
