@@ -38,7 +38,7 @@ Tier 3: Delves into data that remains unresolved post Tiers 1 and 2, earmarked f
 
 # Failures To Reference
 
-• Uncompleted Task (Spell checking automation for the "Invoice Supplier City" column)
+Uncompleted Task (Spell checking automation for the "Invoice Supplier City" column)
 
 Packages That Didn't Work: 
 
