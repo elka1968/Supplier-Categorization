@@ -9,7 +9,7 @@ import re
 ```
 These are the packages that are used in the code:
 
-- You can change the 'RapidFuzz' packaged where appropriate in preference to a different Python package.
+- You can change the 'RapidFuzz' package where appropriate in preference to a different Python package.
 ```
 
 
