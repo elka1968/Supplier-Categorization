@@ -6,6 +6,9 @@ from alive_progress import alive_bar
 import time
 import re
 
+```
+
+
 def remove_trailing_numbers(name):
     if pd.isna(name):
         return name
